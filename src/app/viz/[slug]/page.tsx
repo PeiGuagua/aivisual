@@ -4,9 +4,11 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { visualizations } from "@/content/visualizations";
 import Perceptron from "@/components/viz/Perceptron";
+import Transformer from "@/components/viz/Transformer";
 
 const vizComponents: Record<string, React.ComponentType> = {
   perceptron: Perceptron,
+  transformer: Transformer,
 };
 
 export function generateStaticParams() {
@@ -73,6 +75,34 @@ export default async function VizPage({
         )}
 
         {/* Explanation */}
+        {slug === "transformer" && (
+          <div className="mt-12 rounded-xl border border-white/10 bg-white/5 p-8">
+            <h2 className="mb-4 text-xl font-bold text-white">
+              About This Paper
+            </h2>
+            <div className="space-y-3 text-sm leading-relaxed text-gray-400">
+              <p>
+                <strong className="text-gray-200">&quot;Attention Is All You Need&quot;</strong> (Vaswani et al., 2017)
+                introduced the Transformer architecture, which replaced recurrence (RNN/LSTM) entirely with
+                self-attention mechanisms.
+              </p>
+              <p>
+                <strong className="text-gray-200">Key Innovation:</strong> Self-attention allows the model to
+                look at all positions in the input simultaneously, rather than processing one token at a time.
+                This enables parallel training and better capture of long-range dependencies.
+              </p>
+              <p>
+                <strong className="text-gray-200">Impact:</strong> The Transformer is the foundation of
+                GPT, BERT, T5, LLaMA, and virtually all modern large language models. It changed the entire
+                field of NLP and has since been applied to vision (ViT), audio, and multimodal tasks.
+              </p>
+              <p>
+                <strong className="text-gray-200">Paper Stats:</strong> Published at NeurIPS 2017.
+                Over 100,000 citations. One of the most influential AI papers ever written.
+              </p>
+            </div>
+          </div>
+        )}
         {slug === "perceptron" && (
           <div className="mt-12 rounded-xl border border-white/10 bg-white/5 p-8">
             <h2 className="mb-4 text-xl font-bold text-white">
